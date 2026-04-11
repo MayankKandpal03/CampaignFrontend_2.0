@@ -44,8 +44,8 @@ export default function Login() {
   return (
     <div className="Login">
         <form action="">
-            <input type="text" name="email" id="email" value={formData.email} onClick={handleInput}/>
-            <input type="password" name="password" id="password" value={formData.email} onClick={handleInput}/>
+            <input className="border-2" type="text" name="email" id="email" value={formData.email} onChange={handleInput}/>
+            <input className="border-2" type="password" name="password" id="password" value={formData.password} onChange={handleInput}/>
             <button type="submit" onSubmit={handleSubmit}>Submit</button>
         </form>
     </div>

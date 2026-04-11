@@ -1,10 +1,16 @@
 import { useState } from 'react'
 import './App.css'
-
+import Login from './pages/LoginPage.jsx'
+import { BrowserRouter, } from 'react-router-dom'
 function App() {
 
   return (
-    <div></div>
+    <BrowserRouter>
+        <div>
+      <Login></Login>
+    </div>
+
+    </BrowserRouter>
   )
 }
 
