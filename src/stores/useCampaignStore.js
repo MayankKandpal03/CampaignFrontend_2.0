@@ -48,3 +48,7 @@ const campaignStore = (set) => ({
     }
   },
 });
+
+const useCampaignStore = create(campaignStore)
+
+export default useCampaignStore;

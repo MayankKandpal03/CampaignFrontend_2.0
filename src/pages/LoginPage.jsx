@@ -164,7 +164,7 @@ export default function Login() {
       <StarField />
 
       {/* ══════════ HEADER ══════════ */}
-      <header className="relative z-10 w-full bg-[#07070c]/90 border-b border-white/[0.06] backdrop-blur-md">
+      <header className="relative z-10 w-full bg-[#07070c]/90 border-b border-white/6 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-[15px] bg-white/[0.07] border border-white/10 text-white">
@@ -184,10 +184,10 @@ export default function Login() {
 
       {/* ══════════ MAIN ══════════ */}
       <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-16">
-        <div className="w-full max-w-[420px] anim-card">
+        <div className="w-full max-w-105 anim-card">
 
           {/* Card */}
-          <div className="rounded-2xl p-9 backdrop-blur-xl bg-white/[0.04] border border-white/[0.10] shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_60px_rgba(0,0,0,0.6)]">
+          <div className="rounded-2xl p-9 backdrop-blur-xl bg-white/4 border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_60px_rgba(0,0,0,0.6)]">
 
             {/* Heading — morphs to Welcome on success */}
             <div className="mb-8">
@@ -205,7 +205,7 @@ export default function Login() {
               </p>
             </div>
 
-            <div className="border-t mb-7 border-white/[0.08]" />
+            <div className="border-t mb-7 border-white/8" />
 
             {/* Error banner — animated slide-in */}
             <div style={{
@@ -243,7 +243,7 @@ export default function Login() {
                     value={formData[name]}
                     onChange={handleInput}
                     disabled={isBusy}
-                    className="input-spark w-full px-4 py-[11px] rounded-xl text-[13.5px] outline-none transition-colors duration-300 disabled:opacity-50 bg-white/[0.06] border border-white/[0.12] text-white placeholder-white/20 focus:border-white/35 focus:bg-white/[0.08]"
+                    className="input-spark w-full px-4 py-2.75 rounded-xl text-[13.5px] outline-none transition-colors duration-300 disabled:opacity-50 bg-white/6 border border-white/12 text-white placeholder-white/20 focus:border-white/35 focus:bg-white/8"
                   />
                 </div>
               ))}
@@ -253,7 +253,7 @@ export default function Login() {
                 type="submit"
                 disabled={isBusy}
                 style={{ minHeight: "44px" }}
-                className={`relative w-full py-[11px] rounded-xl font-medium text-[13.5px] tracking-wide
+                className={`relative w-full py-2.75 rounded-xl font-medium text-[13.5px] tracking-wide
                   flex items-center justify-center gap-2 mt-1 cursor-pointer transition-all duration-500
                   disabled:cursor-not-allowed
                   ${isBusy
@@ -294,7 +294,7 @@ export default function Login() {
       </main>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="relative z-10 w-full bg-[#07070c]/80 border-t border-white/[0.05] backdrop-blur-md">
+      <footer className="relative z-10 w-full bg-[#07070c]/80 border-t border-white/5 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[11.5px] text-white/20">
             © {new Date().getFullYear()} XYZ Inc. All rights reserved.
