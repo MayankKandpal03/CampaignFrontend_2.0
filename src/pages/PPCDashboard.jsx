@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import useCampaignStore   from "../stores/useCampaignStore.js";
 import useAuthStore       from "../stores/useAuthStore.js";
 import useNotifStore      from "../stores/useNotificationStore.js";
-
+import { io } from "socket.io-client";
 /* ─── Font injection ─────────────────────────────────────────────────────── */
 const injectFonts = () => {
   if (document.getElementById("ops-fonts")) return;
@@ -517,37 +517,37 @@ export default function PPCDashboard() {
   /* ── Real-time socket integration ─────────────────────────────────────
    * Uncomment after: npm install socket.io-client
    * and add: import { io } from "socket.io-client";
-   *
-   * useEffect(() => {
-   *   const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:3000", {
-   *     withCredentials: true,
-   *   });
-   *
-   *   // campaign:created  → prepend to Zustand store
-   *   socket.on("campaign:created", (c) => {
-   *     useCampaignStore.setState(s => ({ campaigns: [c, ...s.campaigns] }));
-   *     addNotification("New campaign created");
-   *   });
-   *
-   *   // campaign:updated  → patch matching campaign in store
-   *   socket.on("campaign:updated", (c) => {
-   *     useCampaignStore.setState(s => ({
-   *       campaigns: s.campaigns.map(x => x._id === c._id ? c : x),
-   *     }));
-   *     addNotification(`Campaign updated`);
-   *   });
-   *
-   *   // campaign:it_ack   → IT responded
-   *   socket.on("campaign:it_ack", (c) => {
-   *     useCampaignStore.setState(s => ({
-   *       campaigns: s.campaigns.map(x => x._id === c._id ? c : x),
-   *     }));
-   *     addNotification(`IT acknowledged: ${c.itMessage?.slice(0, 40)}`);
-   *   });
-   *
-   *   return () => socket.disconnect();
-   * }, [addNotification]);
    */
+    useEffect(() => {
+      const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:3000", {
+        withCredentials: true,
+      });
+   
+      // campaign:created  → prepend to Zustand store
+      socket.on("campaign:created", (c) => {
+        useCampaignStore.setState(s => ({ campaigns: [c, ...s.campaigns] }));
+        addNotification("New campaign created");
+      });
+   
+      // campaign:updated  → patch matching campaign in store
+      socket.on("campaign:updated", (c) => {
+        useCampaignStore.setState(s => ({
+          campaigns: s.campaigns.map(x => x._id === c._id ? c : x),
+        }));
+        addNotification(`Campaign updated`);
+      });
+   
+      // campaign:it_ack   → IT responded
+      socket.on("campaign:it_ack", (c) => {
+        useCampaignStore.setState(s => ({
+          campaigns: s.campaigns.map(x => x._id === c._id ? c : x),
+        }));
+        addNotification(`IT acknowledged: ${c.itMessage?.slice(0, 40)}`);
+      });
+   
+      return () => socket.disconnect();
+    }, [addNotification]);
+   
 
   /* ── Derived stats ───────────────────────────────────────────────────── */
   const stats = useMemo(() => ({
